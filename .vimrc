@@ -36,10 +36,6 @@ call plug#end()
 set number
 set guifont=Fira\ Code:h12
 
-" Clipboard 
-" Fedora need to install vimx and set alias vim=vimx
-set clipboard=unnamedplus
-set mouse=a
 "Enable Theming Support
 if (has("termguicolors"))  
 	set termguicolors
@@ -125,6 +121,12 @@ inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 
-inoremap <C-v> <ESC>"+pa
+" Clipboard 
+" Fedora need to install vimx and set alias vim=vimx
+"
+"" Uncomment to share same clipboard
+"set clipboard=unnamedplus
+set mouse=a
+
 vnoremap <C-c> "+y
 vnoremap <C-d> "+d
