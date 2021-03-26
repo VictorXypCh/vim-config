@@ -1,3 +1,4 @@
+set encoding=UTF-8
 call plug#begin("~/.vim/plugged")
   " Plugin Section
 	
@@ -33,8 +34,12 @@ call plug#end()
 "Config Section
 
 set number
+set guifont=Fira\ Code:h12
 
-
+" Clipboard 
+" Fedora need to install vimx and set alias vim=vimx
+set clipboard=unnamedplus
+set mouse=a
 "Enable Theming Support
 if (has("termguicolors"))  
 	set termguicolors
@@ -63,7 +68,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " " Toggle
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
-
 " open new split panes to right and below
 set splitright
 set splitbelow
@@ -76,13 +80,20 @@ au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " open terminal on ctrl+n
 function! OpenTerminal()
 	"Windows CMD as terminal
-	split term://C:\WINDOWS\system32\cmd.exe
+	:term
 	resize 10
 endfunction
 
 nnoremap <c-n> :call OpenTerminal()<CR>
 
-
+" Layout for dev open file explorer and terminal
+"augroup NERD
+"   au!
+"   autocmd VimEnter * call OpenTerminal()
+"   autocmd VimEnter * wincmd p
+"   autocmd VimEnter * NERDTree
+"   autocmd VimEnter * wincmd p
+"augroup END
 " use alt+hjkl to move between split/vsplit panels
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
@@ -109,3 +120,11 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 
 " My Custom
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
+
+inoremap <C-v> <ESC>"+pa
+vnoremap <C-c> "+y
+vnoremap <C-d> "+d
