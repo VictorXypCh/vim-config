@@ -116,17 +116,25 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 
 " My Custom
+
+" select autocomplete ctrl j,k
 inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 
-" Clipboard 
+" System Clipboard 
 " Fedora need to install vimx and set alias vim=vimx
+" After installed 
+" use "+y to copy to system clipboard 
+" use "+d to cut to system clipboard
 "
 "" Uncomment to share same clipboard
 "set clipboard=unnamedplus
+
+" visual block by mouse
 set mouse=a
 
-vnoremap <C-c> "+y
-vnoremap <C-d> "+d
+"vnoremap <C-c> "+y
+"vnoremap <C-d> "+d
+
